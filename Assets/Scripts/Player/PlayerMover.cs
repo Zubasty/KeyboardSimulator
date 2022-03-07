@@ -13,12 +13,12 @@ public class PlayerMover : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _mover = GetComponent<Mover>();
-        transform.position = _player.Target.transform.position + _offset;       
     }
 
     private void Start()
     {
         Move(_player.Target);
+        transform.position = _player.Target.transform.position + _offset;       
     }
 
     private void OnEnable()
