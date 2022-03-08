@@ -2,9 +2,10 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BlockSymbol))]
-public class BlockSymbolVisual : MonoBehaviour
+public class BlockSymbolView : MonoBehaviour
 {
     [SerializeField] private TextMeshPro _text;
+
     private BlockSymbol _block;
 
     private void Awake()

@@ -33,6 +33,6 @@ public class PlayerMover : MonoBehaviour
 
     private void Move(Block target) 
     {
-        _mover.NewTarget(target);
+        _mover.AddTarget(target);
     }
 }

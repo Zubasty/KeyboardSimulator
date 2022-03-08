@@ -14,7 +14,7 @@ public class BlockSymbol : Block
         Renderer.material.color = Color.white;
     }
 
-    public void Initialization(char symbol)
+    public void Initialize(char symbol)
     {
         _symbol = symbol;
     }

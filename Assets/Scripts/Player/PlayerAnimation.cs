@@ -9,7 +9,6 @@ public class PlayerAnimation : MonoBehaviour
 {
     private readonly string SpeedKey = "Speed";
     private readonly string WinKey = "Win";
-    private readonly int NumberLayerAnimator = 0;
 
     [SerializeField] private CameraAnimation _cameraAnimaton;
 

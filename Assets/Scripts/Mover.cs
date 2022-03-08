@@ -34,7 +34,7 @@ public class Mover : MonoBehaviour
         }
     }
 
-    public void NewTarget(Block target)
+    public void AddTarget(Block target)
     {
         _targets.Enqueue(target);
     }

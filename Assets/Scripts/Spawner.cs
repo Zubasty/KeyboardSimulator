@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             BlockSymbol block = Instantiate(_template, new Vector3(i * _template.transform.localScale.x, 0, 0), Quaternion.identity);
-            block.Initialization(text[i]);
+            block.Initialize(text[i]);
             blocks[i] = block;
         }
 
