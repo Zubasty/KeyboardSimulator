@@ -31,6 +31,7 @@ public class SoundPlayer : MonoBehaviour
     {
         _player.SetedTarget -= OnSetedTarget;
         _player.AddedLose -= OnAddedLose;
+        _playerAnimation.EndedWaiting -= Win;
     }
 
     private void OnSetedTarget(Block newTarget)

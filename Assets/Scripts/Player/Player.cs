@@ -23,16 +23,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        BlockSymbol block = Target as BlockSymbol;
-        if (block)
-            block.Wait();
+        TryBlockToWait(Target);
     }
 
     private void Update()
     {
         if (IsWin == false && Input.anyKeyDown)
         {
-            if(FindButtonDown(out KeyCode keyCode))
+            if (FindButtonDown(out KeyCode keyCode))
             {
                 WorkWithRoad(keyCode);
             }
@@ -50,6 +48,19 @@ public class Player : MonoBehaviour
             }
         }
         key = KeyCode.None;
+        return false;
+    }
+
+    private bool TryBlockToWait(Block block)
+    {
+        BlockSymbol blockSymbol = block as BlockSymbol;
+
+        if (blockSymbol)
+        {
+            blockSymbol.Wait();
+            return true;
+        }
+
         return false;
     }
 
@@ -82,10 +93,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    block = Target as BlockSymbol;
-
-                    if (block)
-                        block.Wait();
+                    TryBlockToWait(Target);
                 }
             }
         }
