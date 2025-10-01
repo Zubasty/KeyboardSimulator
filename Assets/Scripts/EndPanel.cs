@@ -1,7 +1,7 @@
-using IJunior.TypedScenes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class EndPanel : MonoBehaviour
@@ -40,16 +40,18 @@ public class EndPanel : MonoBehaviour
         _group.alpha = 1;
         _group.blocksRaycasts = true;
         _group.interactable = true;
-        _text.text = $"Ты справился с текстом за {_timer.Time.TotalSeconds} с.\nТвое количество ошибок: {_player.CountLose}.";
+        _text.text = $"Ты справился с текстом!\n"+
+                     $"Частота ошибок: {Mathf.Round((float)((float)_player.CountLose/(_player.CountLose + TypeTextSwitcher.TEXT_FOR_GAME.Length))*100)}%.\n" +
+                     $"Средняя скорость: {Mathf.Round((float)(TypeTextSwitcher.TEXT_FOR_GAME.Length*60/_timer.Time.TotalSeconds*100))/100} символов в минуту.\n";
     }
 
     private void Restart()
     {
-        Game.Load(_levelInitializater.Text);
+        SceneManager.LoadScene(0);
     }
 
     private void OnMenu()
     {
-        Menu.Load();
+        SceneManager.LoadScene(0);
     }
 }

@@ -38,27 +38,30 @@ public class PlayerAnimation : MonoBehaviour
         _player.Won -= OnWon;
     }
 
-    private void OnWon()
-    {
-        StartCoroutine(WaitingEndMove());
-    }
-
-    private IEnumerator WaitingEndMove()
-    {
-        while (_speed > 0)
-        {          
-            yield return null;
-        }
-
-        yield return StartCoroutine(_cameraAnimaton.MoveToPlayer(_player));
-        _animator.SetTrigger(WinKey);
-        EndedWaiting?.Invoke();
-        yield return null;
-    }
-
     private void OnMoved(float speed)
     {
         _speed = speed;
         _animator.SetFloat(SpeedKey, _speed);
+    }
+
+    private void OnWon()
+    {
+        StartCoroutine(WaitForStopAndAnimate());
+    }
+
+    private IEnumerator WaitForStopAndAnimate()
+    {
+        // Ждём, пока моделька полностью остановится
+        while (_mover.IsMoving)
+        {
+            yield return null;
+        }
+
+        // Анимация камеры к игроку
+        yield return StartCoroutine(_cameraAnimaton.MoveToPlayer(_player));
+
+        // Запускаем анимацию победы
+        _animator.SetTrigger(WinKey);
+        EndedWaiting?.Invoke();
     }
 }

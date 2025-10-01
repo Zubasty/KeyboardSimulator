@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BlockSymbol))]
@@ -15,6 +15,7 @@ public class BlockSymbolView : MonoBehaviour
 
     private void Start()
     {
-        _text.text = _block.Symbol.ToString();      
+        if (_block.Symbol.ToString() == "\n") _text.text = "⏎";
+        else _text.text = _block.Symbol.ToString();      
     }
 }

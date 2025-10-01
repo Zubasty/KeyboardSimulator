@@ -1,15 +1,11 @@
 using UnityEngine;
-using IJunior.TypedScenes;
 
-public class MenuInitializater : MonoBehaviour, ISceneLoadHandler<bool>
+public class MenuInitializater : MonoBehaviour
 {
     [SerializeField] private AudioSource _backgroundMusic;
 
-    public void OnSceneLoaded(bool isStart = true)
+    public void Awake()
     {
-        if (isStart)
-        {
-            Instantiate(_backgroundMusic);
-        }
+        Instantiate(_backgroundMusic);
     }
 }

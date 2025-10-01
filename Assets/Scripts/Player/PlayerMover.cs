@@ -18,7 +18,7 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         Move(_player.Target);
-        transform.position = _player.Target.transform.position + _offset;       
+        transform.position = _player.Target.transform.position + _offset;
     }
 
     private void OnEnable()
@@ -28,10 +28,10 @@ public class PlayerMover : MonoBehaviour
 
     private void OnDisable()
     {
-        _player.SetedTarget -= Move;       
+        _player.SetedTarget -= Move;
     }
 
-    private void Move(Block target) 
+    private void Move(Block target)
     {
         _mover.AddTarget(target);
     }
